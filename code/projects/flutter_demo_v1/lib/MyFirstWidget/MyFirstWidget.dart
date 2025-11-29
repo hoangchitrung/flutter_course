@@ -8,7 +8,11 @@ class Myfirstwidget extends StatelessWidget {
       color: Colors.blue,
       child: Center(
         child: Text(
-          "Hello World", style: TextStyle(color: Colors.white),
+          "Hello World",
+          style: TextStyle(
+            color: Colors.white,
+            decoration: TextDecoration.none,
+          ),
         ),
       ),
     );
