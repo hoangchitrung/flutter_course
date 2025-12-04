@@ -9,7 +9,7 @@ class ListViewMethod extends StatefulWidget {
 
 class _ListViewMethodState extends State<ListViewMethod> {
   List<String> products = List.generate(5, (index) {
-    return "MY PRODUCT";
+    return "MY PRODUCT $index";
   });
 
   void update() {
