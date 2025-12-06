@@ -39,7 +39,7 @@ double f([int? n, double? x]) {
 
   // Input n: a0 -> an
   double v = 0;
-  for (int i = 0; i <= n!; i++) {
+  for (int i = 0; i <= n; i++) {
     // nhap a
     double a = double.parse(stdin.readLineSync()!);
     v += a * pow(x, i);

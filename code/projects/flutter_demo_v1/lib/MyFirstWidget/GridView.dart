@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class GridViewMethod extends StatefulWidget {
+  const GridViewMethod({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _GridViewMethod();

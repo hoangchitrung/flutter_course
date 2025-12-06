@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyHome2 extends StatelessWidget {
+  const MyHome2({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

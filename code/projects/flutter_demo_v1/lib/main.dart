@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_v1/MyFirstWidget/Counter.dart';
-import 'package:flutter_demo_v1/MyFirstWidget/GridView.dart';
-import 'package:flutter_demo_v1/MyFirstWidget/ListView.dart';
+import 'package:flutter_demo_v1/MyFirstWidget/DropDownList.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,8 +17,9 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.blue[400],
           centerTitle: true,
         ),
-        body: GridViewMethod(),
+        body: const DropDownListMethod(),
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.lightGreen,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'person'),
