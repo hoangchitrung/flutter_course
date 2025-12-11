@@ -14,19 +14,34 @@ class ImageMethod extends StatefulWidget {
 
 class _ImageMethodState extends State<ImageMethod> {
   List<Book> books = [];
+  List<Book> filteredBooks = [];
 
   Future<void> loadBooks() async {
     final res = await rootBundle.loadString("assets/data/books.json");
     final List<dynamic> data = json.decode(res);
 
-    books = data.map((item) {
-      return Book.fromJson(item);
-    }).toList();
+    setState(() {
+      books = data.map((item) {
+        return Book.fromJson(item);
+      }).toList();
+    });
+  }
+
+  void filterBook(String query) {
+    if (query.isEmpty) {
+      filteredBooks = books;
+    } else {
+      filteredBooks = books
+          .where(
+            (book) => book.name.toLowerCase().contains(query.toLowerCase()),
+          )
+          .toList();
+    }
+    print(filteredBooks);
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadBooks();
   }
@@ -35,11 +50,37 @@ class _ImageMethodState extends State<ImageMethod> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Text("Books")),
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Text("Books"),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 50),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search...",
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      print("This is from Textfield $value");
+                      filterBook(value);
+                    });
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: ListView.builder(
-        itemCount: books.length,
+        itemCount: filteredBooks.length,
         itemBuilder: (context, index) {
-          final book = books[index];
+          final book = filteredBooks[index];
           return ListTile(
             leading: Column(
               children: [Image.asset(book.image, width: 50, height: 50)],
