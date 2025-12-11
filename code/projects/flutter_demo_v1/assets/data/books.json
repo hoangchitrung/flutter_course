@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "C++",
+        "price": 80.0,
+        "image": "assets/images/c.png",
+        "active": true,
+        "category": "Basic"
+    },
+    {
+        "id": 2,
+        "name": "HTML",
+        "price": 80.0,
+        "image": "assets/images/html.png",
+        "active": true,
+        "category": "Basic"
+    },
+    {
+        "id": 3,
+        "name": "JavaScript",
+        "price": 80.0,
+        "image": "assets/images/java-script.png",
+        "active": false,
+        "category": "Programming"
+    },
+    {
+        "id": 4,
+        "name": "MySQL",
+        "price": 80.0,
+        "image": "assets/images/mysql.png",
+        "active": true,
+        "category": "Basic"
+    },
+    {
+        "id": 5,
+        "name": "Python",
+        "price": 80.0,
+        "image": "assets/images/python.png",
+        "active": true,
+        "category": "Programming"
+    },
+    {
+        "id": 6,
+        "name": "Swift",
+        "price": 80.0,
+        "image": "assets/images/swift.png",
+        "active": false,
+        "category": "Programming"
+    }
+]

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_v1/MyFirstWidget/DropDownList.dart';
+import 'package:flutter_demo_v1/MyFirstWidget/Image.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.blue[400],
           centerTitle: true,
         ),
-        body: const DropDownListMethod(),
+        body: const ImageMethod(),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.lightGreen,
           items: const <BottomNavigationBarItem>[
