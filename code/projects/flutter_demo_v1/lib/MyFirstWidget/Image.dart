@@ -37,7 +37,6 @@ class _ImageMethodState extends State<ImageMethod> {
           )
           .toList();
     }
-    print(filteredBooks);
   }
 
   @override
