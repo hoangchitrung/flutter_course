@@ -17,14 +17,19 @@ class _ImageMethodState extends State<ImageMethod> {
   List<Book> filteredBooks = [];
 
   Future<void> loadBooks() async {
-    final res = await rootBundle.loadString("assets/data/books.json");
-    final List<dynamic> data = json.decode(res);
+    try {
+      final res = await rootBundle.loadString("assets/data/books.json");
+      final List<dynamic> data = json.decode(res);
 
-    setState(() {
-      books = data.map((item) {
-        return Book.fromJson(item);
-      }).toList();
-    });
+      setState(() {
+        books = data.map((item) {
+          return Book.fromJson(item);
+        }).toList();
+        filteredBooks = books;
+      });
+    } catch (e) {
+      print("Error while loading books: $e");
+    }
   }
 
   void filterBook(String query) {
@@ -66,7 +71,6 @@ class _ImageMethodState extends State<ImageMethod> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      print("This is from Textfield $value");
                       filterBook(value);
                     });
                   },
@@ -81,40 +85,35 @@ class _ImageMethodState extends State<ImageMethod> {
         itemBuilder: (context, index) {
           final book = filteredBooks[index];
           return ListTile(
-            leading: Column(
-              children: [Image.asset(book.image, width: 50, height: 50)],
-            ),
-            title: Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Text(book.name, style: TextStyle(fontSize: 15)),
-                            Text(
-                              book.price.toString(),
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(children: [Text(book.category)]),
-                      Row(
+            leading: Image.asset(book.image, width: 50, height: 50),
+            title: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
                         children: [
-                          book.active
-                              ? Icon(Icons.check, color: Colors.green)
-                              : Icon(Icons.cancel, color: Colors.red),
+                          Text(book.name, style: TextStyle(fontSize: 15)),
+                          Text(
+                            book.price.toString(),
+                            style: TextStyle(fontSize: 15),
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                ],
-              ),
-              // trailing: null,
+                    ),
+                    Text(book.category),
+                    Row(
+                      children: [
+                        book.active
+                            ? Icon(Icons.check, color: Colors.green)
+                            : Icon(Icons.cancel, color: Colors.red),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
           );
         },
