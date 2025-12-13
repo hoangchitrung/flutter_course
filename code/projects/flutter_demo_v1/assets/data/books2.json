@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": 13,
         "name": "C++",
         "price": 80.0,
         "image": "assets/images/c.png",
@@ -8,7 +8,7 @@
         "category": "Basic"
     },
     {
-        "id": 2,
+        "id": 14,
         "name": "HTML",
         "price": 80.0,
         "image": "assets/images/html.png",
@@ -16,7 +16,7 @@
         "category": "Basic"
     },
     {
-        "id": 3,
+        "id": 15,
         "name": "JavaScript",
         "price": 80.0,
         "image": "assets/images/java-script.png",
@@ -24,7 +24,7 @@
         "category": "Advanced"
     },
     {
-        "id": 4,
+        "id": 16,
         "name": "MySQL",
         "price": 80.0,
         "image": "assets/images/mysql.png",
@@ -32,7 +32,7 @@
         "category": "Basic"
     },
     {
-        "id": 5,
+        "id": 17,
         "name": "Python",
         "price": 80.0,
         "image": "assets/images/python.png",
@@ -40,7 +40,7 @@
         "category": "Basic"
     },
     {
-        "id": 6,
+        "id": 18,
         "name": "Swift",
         "price": 80.0,
         "image": "assets/images/swift.png",

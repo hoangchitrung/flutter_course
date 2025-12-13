@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_v1/MyFirstWidget/DropDownList.dart';
-import 'package:flutter_demo_v1/MyFirstWidget/Image.dart';
-import 'package:flutter_demo_v1/practices/BookList.dart';
+import 'package:flutter_demo_v1/screens/BookListDemo.dart';
+import 'package:flutter_demo_v1/screens/DemoScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.blue[400],
           centerTitle: true,
         ),
-        body: const BookList(),
+        body: const BookListDemo(),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.lightGreen,
           items: const <BottomNavigationBarItem>[
