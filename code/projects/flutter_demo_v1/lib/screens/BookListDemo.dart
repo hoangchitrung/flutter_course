@@ -69,7 +69,7 @@ class _BookListDemoState extends State<BookListDemo> {
               ),
             )
             .toList();
-        // searchBook = result;
+        searchBook = result;
       }
 
       // // When uncheck it will return the original list of books
