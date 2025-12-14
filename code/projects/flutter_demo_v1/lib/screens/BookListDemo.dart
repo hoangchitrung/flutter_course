@@ -16,13 +16,11 @@ class BookListDemo extends StatefulWidget {
 class _BookListDemoState extends State<BookListDemo> {
   List<Book> books = [];
   List<Book> searchBook = [];
-  List<Book> result = [];
+
+  TextEditingController _textEditingController = TextEditingController();
 
   final categories = {'Basic': false, 'Advanced': false};
 
-  String filterQuery = "";
-  String query = "";
-  late bool checkboxStatus;
   String dataPath = "assets/data/books.json";
 
   Future<void> loadBooks() async {
@@ -42,6 +40,8 @@ class _BookListDemoState extends State<BookListDemo> {
   }
 
   void applyFilters() {
+    // Take text from controller instead of variable query
+    String txt = _textEditingController.text;
     setState(() {
       // select categories
       final selectedCategories = categories.entries
@@ -49,42 +49,25 @@ class _BookListDemoState extends State<BookListDemo> {
           .map((e) => e.key) // extract category name
           .toList();
 
-      // search book by name
-      if (query.isNotEmpty) {
-        searchBook = books
+      // Start from books
+      List<Book> result = books;
+
+      // Filter by text
+      if (txt.isNotEmpty) {
+        result = result
             .where(
-              (book) => book.name.toLowerCase().contains(query.toLowerCase()),
+              (book) => book.name.toLowerCase().contains(txt.toLowerCase()),
             )
             .toList();
-      } else {
-        searchBook = books;
       }
-      // filters book categories
-      // if there is no search
-      if (filterQuery.isNotEmpty) {
-        result = books
-            .where(
-              (book) => book.category.toLowerCase().contains(
-                filterQuery.toLowerCase(),
-              ),
-            )
+
+      // Filter by categories
+      if (selectedCategories.isNotEmpty) {
+        result = result
+            .where((book) => selectedCategories.contains(book.category))
             .toList();
-        searchBook = result;
       }
-
-      // // When uncheck it will return the original list of books
-      if (checkboxStatus == false) {
-        searchBook = books;
-      }
-
-      // if (selectedCategories.isNotEmpty) {
-      //   searchBook = searchBook
-      //       .where(
-      //         (book) =>
-      //             selectedCategories.contains(book.category.toLowerCase()),
-      //       )
-      //       .toList();
-      // }
+      searchBook = result;
     });
   }
 
@@ -92,6 +75,16 @@ class _BookListDemoState extends State<BookListDemo> {
   void initState() {
     super.initState();
     loadBooks();
+
+    _textEditingController.addListener(() { // Call func when text change
+      applyFilters();
+    });
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose(); // release memory
+    super.dispose();
   }
 
   @override
@@ -104,6 +97,7 @@ class _BookListDemoState extends State<BookListDemo> {
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
               // Search bar
+              controller: _textEditingController,
               decoration: InputDecoration(
                 hintText: "Search...",
                 prefixIcon: Icon(Icons.search),
@@ -111,10 +105,6 @@ class _BookListDemoState extends State<BookListDemo> {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
-              onChanged: (value) {
-                query = value;
-                applyFilters();
-              },
             ),
           ),
           SizedBox(height: 10),
@@ -137,8 +127,6 @@ class _BookListDemoState extends State<BookListDemo> {
                       onChanged: (value) {
                         setState(() {
                           categories[e.key] = value!;
-                          filterQuery = e.key;
-                          checkboxStatus = value;
                           applyFilters();
                         });
                       },
