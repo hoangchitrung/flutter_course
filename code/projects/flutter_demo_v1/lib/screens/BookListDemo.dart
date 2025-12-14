@@ -69,18 +69,19 @@ class _BookListDemoState extends State<BookListDemo> {
               ),
             )
             .toList();
-        searchBook = result;
+        // searchBook = result;
       }
-      // When uncheck it will return the original list of books
+
+      // // When uncheck it will return the original list of books
       if (checkboxStatus == false) {
         searchBook = books;
       }
+
       // if (selectedCategories.isNotEmpty) {
-      //   result = searchBook
+      //   searchBook = searchBook
       //       .where(
-      //         (book) => book.category.toLowerCase().contains(
-      //           selectedCategories.toString().toLowerCase(),
-      //         ),
+      //         (book) =>
+      //             selectedCategories.contains(book.category.toLowerCase()),
       //       )
       //       .toList();
       // }
