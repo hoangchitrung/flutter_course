@@ -76,7 +76,8 @@ class _BookListDemoState extends State<BookListDemo> {
     super.initState();
     loadBooks();
 
-    _textEditingController.addListener(() { // Call func when text change
+    _textEditingController.addListener(() {
+      // Call func when text change
       applyFilters();
     });
   }
@@ -146,7 +147,14 @@ class _BookListDemoState extends State<BookListDemo> {
               itemCount: searchBook.length,
               itemBuilder: (context, index) {
                 final book = searchBook[index];
-                return BookCard(book: book);
+                return Dismissible(
+                  key: ValueKey(book.id),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (direction) {
+                    searchBook.remove(book);
+                  },
+                  child: BookCard(book: book),
+                );
               },
             ),
           ),
