@@ -5,7 +5,7 @@
         "price": 80.0,
         "image": "assets/images/typescript.png",
         "active": true,
-        "category": "Basic"
+        "category": "Programming"
     },
     {
         "id": 14,
@@ -13,7 +13,7 @@
         "price": 80.0,
         "image": "assets/images/sql-server.png",
         "active": true,
-        "category": "Basic"
+        "category": "Data"
     },
     {
         "id": 15,
@@ -21,6 +21,6 @@
         "price": 80.0,
         "image": "assets/images/debian.png",
         "active": false,
-        "category": "Advanced"
+        "category": "OS"
     }
 ]

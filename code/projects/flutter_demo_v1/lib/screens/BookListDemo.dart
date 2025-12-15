@@ -19,19 +19,27 @@ class _BookListDemoState extends State<BookListDemo> {
 
   TextEditingController _textEditingController = TextEditingController();
 
-  final categories = {'Programming': false, 'Data': false, 'OS': false, 'Software': false};
+  ScrollController _scrollController = ScrollController();
 
-  String dataPath = "assets/data/books.json";
+  final categories = {
+    'Programming': false,
+    'Data': false,
+    'OS': false,
+    'Software': false,
+  };
+
+  int page = 0;
 
   Future<void> loadBooks() async {
     try {
-      final res = await rootBundle.loadString(dataPath);
+      final res = await rootBundle.loadString("assets/data/books$page.json");
       final List<dynamic> data = json.decode(res);
 
       setState(() {
-        books = data.map((item) {
+        final newBooks = data.map((item) {
           return Book.fromJson(item);
         }).toList();
+        books.addAll(newBooks); // append keep the old page as the list
       });
       searchBook = books;
     } catch (e) {
@@ -80,11 +88,30 @@ class _BookListDemoState extends State<BookListDemo> {
       // Call func when text change
       applyFilters();
     });
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        page += 1;
+        if (page < 3) {
+          loadBooks();
+          print(page);
+        }
+      } else if (_scrollController.position.pixels ==
+          _scrollController.position.minScrollExtent) {
+        page -= 1;
+        if (page > -1) {
+          loadBooks();
+          print(page);
+        }
+      }
+    });
   }
 
   @override
   void dispose() {
     _textEditingController.dispose(); // release memory
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -144,6 +171,7 @@ class _BookListDemoState extends State<BookListDemo> {
           Expanded(
             // Showing book card
             child: ListView.builder(
+              controller: _scrollController,
               itemCount: searchBook.length,
               itemBuilder: (context, index) {
                 final book = searchBook[index];
