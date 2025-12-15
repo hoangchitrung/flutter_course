@@ -19,7 +19,7 @@ class _BookListDemoState extends State<BookListDemo> {
 
   TextEditingController _textEditingController = TextEditingController();
 
-  final categories = {'Basic': false, 'Advanced': false};
+  final categories = {'Programming': false, 'Data': false, 'OS': false, 'Software': false};
 
   String dataPath = "assets/data/books.json";
 

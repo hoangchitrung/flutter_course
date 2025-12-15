@@ -3,9 +3,9 @@
         "id": 1,
         "name": "C++",
         "price": 80.0,
-        "image": "assets/images/c.png",
+        "image": "assets/images/cplusplus.png",
         "active": true,
-        "category": "Basic"
+        "category": "Programming"
     },
     {
         "id": 2,
@@ -13,15 +13,15 @@
         "price": 80.0,
         "image": "assets/images/html.png",
         "active": true,
-        "category": "Basic"
+        "category": "Programming"
     },
     {
         "id": 3,
         "name": "JavaScript",
         "price": 80.0,
-        "image": "assets/images/java-script.png",
+        "image": "assets/images/js.png",
         "active": false,
-        "category": "Advanced"
+        "category": "Programming"
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "price": 80.0,
         "image": "assets/images/mysql.png",
         "active": true,
-        "category": "Basic"
+        "category": "Data"
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "price": 80.0,
         "image": "assets/images/python.png",
         "active": true,
-        "category": "Basic"
+        "category": "Programming"
     },
     {
         "id": 6,
@@ -45,6 +45,6 @@
         "price": 80.0,
         "image": "assets/images/swift.png",
         "active": false,
-        "category": "Advanced"
+        "category": "Programming"
     }
 ]

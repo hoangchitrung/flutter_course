@@ -1,49 +1,25 @@
 [
     {
         "id": 13,
-        "name": "C++",
+        "name": "TypeScript",
         "price": 80.0,
-        "image": "assets/images/c.png",
+        "image": "assets/images/typescript.png",
         "active": true,
         "category": "Basic"
     },
     {
         "id": 14,
-        "name": "HTML",
+        "name": "SQL Server",
         "price": 80.0,
-        "image": "assets/images/html.png",
+        "image": "assets/images/sql-server.png",
         "active": true,
         "category": "Basic"
     },
     {
         "id": 15,
-        "name": "JavaScript",
+        "name": "Debian",
         "price": 80.0,
-        "image": "assets/images/java-script.png",
-        "active": false,
-        "category": "Advanced"
-    },
-    {
-        "id": 16,
-        "name": "MySQL",
-        "price": 80.0,
-        "image": "assets/images/mysql.png",
-        "active": true,
-        "category": "Basic"
-    },
-    {
-        "id": 17,
-        "name": "Python",
-        "price": 80.0,
-        "image": "assets/images/python.png",
-        "active": true,
-        "category": "Basic"
-    },
-    {
-        "id": 18,
-        "name": "Swift",
-        "price": 80.0,
-        "image": "assets/images/swift.png",
+        "image": "assets/images/debian.png",
         "active": false,
         "category": "Advanced"
     }

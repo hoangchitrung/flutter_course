@@ -1,50 +1,50 @@
 [
     {
         "id": 7,
-        "name": "C++",
+        "name": "C#",
         "price": 80.0,
-        "image": "assets/images/c.png",
+        "image": "assets/images/c-sharp.png",
         "active": true,
-        "category": "Basic"
+        "category": "Programming"
     },
     {
         "id": 8,
-        "name": "HTML",
+        "name": "PHP",
         "price": 80.0,
-        "image": "assets/images/html.png",
+        "image": "assets/images/php.png",
         "active": true,
-        "category": "Basic"
+        "category": "Programming"
     },
     {
         "id": 9,
-        "name": "JavaScript",
+        "name": "Java",
         "price": 80.0,
-        "image": "assets/images/java-script.png",
+        "image": "assets/images/java.png",
         "active": false,
-        "category": "Advanced"
+        "category": "Programming"
     },
     {
         "id": 10,
-        "name": "MySQL",
+        "name": "Premiere Pro",
         "price": 80.0,
-        "image": "assets/images/mysql.png",
+        "image": "assets/images/premiere-pro.png",
         "active": true,
-        "category": "Basic"
+        "category": "Software"
     },
     {
         "id": 11,
-        "name": "Python",
+        "name": "Windows 10",
         "price": 80.0,
-        "image": "assets/images/python.png",
+        "image": "assets/images/windows-10.png",
         "active": true,
-        "category": "Basic"
+        "category": "OS"
     },
     {
         "id": 12,
-        "name": "Swift",
+        "name": "Windows 11",
         "price": 80.0,
-        "image": "assets/images/swift.png",
+        "image": "assets/images/windows-11.png",
         "active": false,
-        "category": "Advanced"
+        "category": "OS"
     }
 ]
