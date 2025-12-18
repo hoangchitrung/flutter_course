@@ -17,9 +17,9 @@ class _BookListDemoState extends State<BookListDemo> {
   List<Book> books = [];
   List<Book> searchBook = [];
 
-  TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _textEditingController = TextEditingController();
 
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   final categories = {
     'Programming': false,
