@@ -57,7 +57,7 @@ class _DemoState extends State<DemoScreen> {
   }
 
   void filter() {
-    String txt = this._controller.text;
+    String txt = _controller.text;
 
     setState(() {
       filteredBooks = books.where((b) {

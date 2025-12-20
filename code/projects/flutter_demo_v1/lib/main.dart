@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_v1/screens/BookListDemo.dart';
+import 'package:flutter_demo_v1/screens/task_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("My Demo App"),
+          title: Text("Task Management Screen"),
           backgroundColor: Colors.blue[400],
           centerTitle: true,
         ),
-        body: const BookListDemo(),
+        body: const TaskScreen(),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.lightGreen,
           items: const <BottomNavigationBarItem>[
