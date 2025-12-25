@@ -54,41 +54,69 @@ class _TaskScreenState extends State<TaskScreen> {
 
   void add() async {
     setState(() => _submitting = true);
+
     try {
       Task t = Task(
         subject: _subjectController.text,
         content: _contentController.text,
         priority: _selectedPriority.name,
-        categories: _selectedCategory!.id,
+        categories: _selectedCategory!,
       );
+
       final res = await addTask(t);
       if (res == true) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text("Add task success")));
+        ).showSnackBar(SnackBar(content: Text("Add task successful!")));
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Add task failed!")));
       }
     } catch (ex) {
-      throw Exception(ex.toString());
+      print(ex.toString());
     } finally {
       setState(() => _submitting = false);
     }
   }
 
-  void delete() async {
+  void delete(Task t) async {
     showDialog(
       context: context,
-      builder: AlertDialog(
-        title: Text("Are you sure to remove this task?"),
-        actions: [
-          ElevatedButton(onPressed: () {}, child: Text("Ok")),
-          ElevatedButton(onPressed: () {}, child: Text("Cancel")),
-        ],
-      ),
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Are you sure to delete this task?"),
+          actions: [
+            ElevatedButton(
+              onPressed: () async {
+                final res = await deleteTask(t);
+                if (res == true) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Delete task successful!")),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Delete task failed!")),
+                  );
+                }
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Cancel"),
+            ),
+          ],
+        );
+      },
     );
   }
 
   Priority _selectedPriority = Priority.low; // Display the selected values
-  Categories? _selectedCategory;
+  String? _selectedCategory;
   // load categories
   Future<List<Categories>> loadCategories() async {
     Uri uri = Uri.parse(
@@ -101,7 +129,7 @@ class _TaskScreenState extends State<TaskScreen> {
       List data = json.decode(res.body);
       return data.map((json) => Categories.fromJson(json)).toList();
     } else {
-      throw Exception("Something errorr");
+      throw Exception("Something error");
     }
   }
 
@@ -169,11 +197,11 @@ class _TaskScreenState extends State<TaskScreen> {
                     return CircularProgressIndicator();
                   }
                   final categories = snapshot.data!;
-                  return DropdownButtonFormField<Categories>(
+                  return DropdownButtonFormField<String>(
                     initialValue: _selectedCategory,
                     hint: Text('Select a category'),
                     items: categories.map((c) {
-                      return DropdownMenuItem(value: c, child: Text(c.name));
+                      return DropdownMenuItem(value: c.id, child: Text(c.name));
                     }).toList(),
                     onChanged: (value) {
                       setState(() {
