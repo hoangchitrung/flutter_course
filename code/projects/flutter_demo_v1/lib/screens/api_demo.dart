@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_v1/models/categories.dart';
+import 'package:flutter_demo_v1/screens/task_screen.dart';
 import 'package:http/http.dart' as http;
 
 class ApiDemo extends StatefulWidget {
@@ -64,7 +65,19 @@ class _ApiDemoState extends State<ApiDemo> {
               itemBuilder: (context, index) {
                 final c = categories[index];
                 return ListTile(
-                  leading: CircleAvatar(child: Text(c.id)),
+                  leading: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return TaskScreen(cateId: c.id);
+                          },
+                        ),
+                      );
+                    },
+                    child: CircleAvatar(child: Text(c.id)),
+                  ),
                   title: Text(c.name),
                 );
               },
@@ -78,12 +91,23 @@ class _ApiDemoState extends State<ApiDemo> {
               itemBuilder: (context, index) {
                 final c = categories[index];
                 return Card(
-                  // margin: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
                   child: Center(
                     child: Row(
                       children: [
-                        CircleAvatar(
-                          child: Text(c.id, style: TextStyle(fontSize: 20)),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return TaskScreen(cateId: c.id);
+                                },
+                              ),
+                            );
+                          },
+                          child: CircleAvatar(
+                            child: Text(c.id, style: TextStyle(fontSize: 20)),
+                          ),
                         ),
                         SizedBox(width: 20),
                         Text(c.name, style: TextStyle(fontSize: 20)),
