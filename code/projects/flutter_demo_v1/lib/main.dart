@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_v1/ExpenseManagement/expense_main_screen.dart';
 import 'package:flutter_demo_v1/screens/DemoScreen.dart';
 import 'package:flutter_demo_v1/screens/api_demo.dart';
 import 'package:flutter_demo_v1/screens/task_screen.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TaskMainScreen()
+      home: const ExpenseMainScreen(),
 
       // Scaffold(
       //   appBar: AppBar(
