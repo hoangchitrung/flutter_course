@@ -33,6 +33,12 @@ class _ExpenseListState extends State<ExpenseListScreen> {
   }
 
   @override
+  void initState() {
+    loadItem();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Expense List")),
@@ -55,7 +61,36 @@ class _ExpenseListState extends State<ExpenseListScreen> {
             itemCount: items.length,
             itemBuilder: (context, index) {
               final item = items[index];
-              return ListTile(leading: Text(item.id!));
+              return Padding(
+                padding: EdgeInsets.all(10),
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Note: ${item.content}",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Text(
+                          "Type: ${item.type.name.toUpperCase()}",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "Price: ${item.amount.toString()}",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Text(
+                          "Date: ${item.createdDate}",
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
             },
           );
         },
